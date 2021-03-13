@@ -5,6 +5,7 @@ import Advance from'./AdvanceJS/adcancejs' ;
 import Conditional from './Condition/condition';
 import Map from './Map/Map';
 import State from './state/state';
+import Axios from './axios/axios';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Conditional />
       <Map/>
       <State/>
+      <Axios/>
     </div>
   );
 }
