@@ -39,10 +39,7 @@ class Conditional extends Component{
             <p>If..ELse.If  {this.condition ? <span>Value is not 0</span> : this.isValue === 1 ? <span>value is  0</span> : null}</p>
             <p>execute inside render {conditionalElement}</p>
             <p>Function {this.functionRender()}</p>
-            <p onClick = {this.click} > Gokul  </p>
-            
-     
-            
+            <p onClick = {this.click} > Gokul  </p>   
             </div>
         )
     }
