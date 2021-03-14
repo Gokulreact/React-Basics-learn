@@ -8,6 +8,7 @@ import State from './state/state';
 import Axios from './axios/axios';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 import { Component } from 'react';
+import store, {COUNTER_INCREMENT, COUNTER_DECREMENT} from './redux/reduxbasics'
 
 
 const Home = (props) =>{
@@ -38,6 +39,28 @@ class App extends Component {
     name:'Check', path:'/Check'
   }
   ]
+
+  increment = () =>{
+    store.dispatch({type: COUNTER_INCREMENT});
+    console.log(store.getState());//getState for get all the datas in Store
+  }
+
+  decrement = () =>{
+    store.dispatch({type: COUNTER_DECREMENT});
+    console.log(store.getState());
+  }
+
+  push = () =>{
+    store.dispatch({type: 'push', value: Math.random()});
+    console.log(store.getState());
+  }
+
+  pop = () =>{
+    store.dispatch({type: 'pop'});
+    console.log(store.getState());
+  }
+
+
   render(){
   return (
     <div className="App">
@@ -62,6 +85,11 @@ class App extends Component {
        <Route  component={Error} />
         </Switch>
       </BrowserRouter>
+      <br />
+      <button onClick={this.increment}>Increment</button>
+      <button onClick={this.decrement}>Decrement</button>
+      <button onClick={this.push}>push</button>
+      <button onClick={this.pop}>pop</button>
     </div>
   );
 }
