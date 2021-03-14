@@ -8,7 +8,9 @@ import State from './state/state';
 import Axios from './axios/axios';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 import { Component } from 'react';
-import store, {COUNTER_INCREMENT, COUNTER_DECREMENT} from './redux/reduxbasics'
+import {Provider} from 'react-redux';
+import store, {COUNTER_INCREMENT, COUNTER_DECREMENT} from './redux/reduxbasics';
+import Reactredux from './redux/reactredux'
 
 
 const Home = (props) =>{
@@ -86,10 +88,13 @@ class App extends Component {
         </Switch>
       </BrowserRouter>
       <br />
+      <Provider store={store}>
       <button onClick={this.increment}>Increment</button>
       <button onClick={this.decrement}>Decrement</button>
       <button onClick={this.push}>push</button>
       <button onClick={this.pop}>pop</button>
+      </Provider>
+      <Reactredux/>
     </div>
   );
 }
