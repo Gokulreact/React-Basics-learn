@@ -1,15 +1,19 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, formValueSelector, reduxForm } from 'redux-form';
 import Input from './input'
 
 const onSubmit = (values) =>{
     console.log(values);
 }
 
-const SimpleForm = props => {
+var SimpleForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <div >
+    {
+      props._firstName
+    }
       <div>
         <label>First Name</label>
         <div>
@@ -100,10 +104,30 @@ const SimpleForm = props => {
   )
 }
 
-const validate=(value)=>{
-    
+
+
+// SimpleForm = reduxForm({
+//   form: 'simple', // a unique identifier for this form
+//   //validate,
+// })(SimpleForm);
+
+SimpleForm = reduxForm({
+  form: 'simple'
+})(SimpleForm);
+
+const selector = formValueSelector('simple');
+
+const mapStateToProps = (state)=>{
+  return{
+    _firstName : selector(state, 'firstName' )
+  }
 }
-export default reduxForm({
-  form: 'simple', // a unique identifier for this form
-  validate,
-})(SimpleForm)
+
+const mapDispatchToProps  = (dispatch) =>{
+  return{
+    
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps )(SimpleForm);
