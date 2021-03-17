@@ -10,7 +10,9 @@ import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 import { Component } from 'react';
 import {Provider} from 'react-redux';
 import store, {COUNTER_INCREMENT, COUNTER_DECREMENT} from './redux/reduxbasics';
-import Reactredux from './redux/reactredux'
+import Reactredux from './redux/reactredux';
+import Form from './redux/ReduxForm/reduxform';
+import store1 from './redux/ReduxForm/store.js';
 
 
 const Home = (props) =>{
@@ -93,8 +95,13 @@ class App extends Component {
       <button onClick={this.decrement}>Decrement</button>
       <button onClick={this.push}>push</button>
       <button onClick={this.pop}>pop</button>
+     
       </Provider>
       <Reactredux/>
+      <Provider store={store1}>
+      <Form/>
+      </Provider>
+      
     </div>
   );
 }
